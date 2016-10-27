@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的音乐</title>
+    <link rel="icon" href="../images/14FY35435R60-259245_01.jpg"/>
+    <link rel="stylesheet" href="../css/viewspublic.css"/>
+    <link rel="stylesheet" href="../css/mymusic.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.min.css"/>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function(){
+            //收起歌单；
+            function slid(){
+                var boolen=false
+                $("#slid").click(function(){
+                    boolen=!boolen
+                    $("#list").slideToggle()
+                    if(boolen==true){
+                        $("#slid i").css("transform","rotate(90deg)")
+                    }else{
+                        $("#slid i").css("transform","rotate(0deg)")
+                    }
+                })
+            }
+            slid()
+            //歌曲列表；
+            function list(){
+                var data=[
+                    {"name":"告白气球","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"결혼식","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"나만 안되는 연애 - ","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"반지 - (戒指)","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"악몽 - (噩梦)","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"You(=I)","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"第一次","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"싸운날 - ","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"티라미수 케익 - ","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"우주를 줄게 - (给你宇宙)MV","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"있잖아요  - (不是有嘛)","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"거절하지 말아요 ","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"Wild ChildMV","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"你是我的星球 -","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"你好可爱MV","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"为你写诗MV","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"美好事物","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"},
+                    {"name":"Wake Me Up ","time":"03:35","songer":"周杰伦","CD":"周杰伦的床边故事"}
+                ]
+                        for(var i=0;i<data.length-1;i++){
+                            var $clone=$(".content .right .songs table tbody tr:first-child").clone();
+                            $(".content .right .songs table tbody").append($clone)
+                        }
+                        $(".content .right .songs table tbody tr").each(function(index){
+                            $(this).find("td:eq(0)").html(index+1+"<a href='javascript:;'></a>")
+                            $(this).find("td:eq(1)").text(data[index].name)
+                            $(this).find("td:eq(2)").text(data[index].time)
+                            $(this).find("td:eq(3)").text(data[index].songer)
+                            $(this).find("td:eq(4)").text(data[index].CD)
+                            if(index%2==0){
+                                $(this).css("background","#f7f7f7")
+                            }else{
+                                $(this).css("background","#fff")
+                            }
+                        })
+            }
+            list()
+            //评论区；
+            function comment(){
+                $("#comments button[name='comment']").click(function(){
+                    var Li=$("#list_ul li:first-child").clone();
+                    var text=$("#comments textarea").val()
+                    var user=$(".header .ID em").text()
+                    var time=new Date()
+                    var timer=time.getFullYear()+"."+time.getMonth()+"."
+                    Li.find(".inner .writ>span").text(text)
+                    Li.find(".inner .writ a").text(user)
+                    Li.find(".inner .writ .more span").text(timer)
+                    Li.appendTo($("#list_ul"))
+                })
+            }
+            comment()
+        })
+    </script>
+</head>
+<body>
+<div class="header_bj" id="start">
+    <div class="header main">
+        <a href="#"  class="logo"></a>
+        <ul>
+            <li><a href="../index.html"><em>发现音乐</em></a></li>
+            <li><a href="#"><em>我的音乐</em></a><i class='sanjiao'></i></li>
+            <li><a  href="friend.html"><em>朋友</em></a></li>
+            <li><a  href="download.html"><em>下载客户端</em></a><i class="hot"></i></li>
+        </ul>
+        <form>
+            <input type="text" />
+        </form>
+        <a  href="javascript:;" class="message"><i>2</i></a>
+        <a  href="javascript:;"  class="ID"><em>十一秒</em><i></i></a>
+        <a  href="javascript:;" class="user"></a>
+    </div>
+</div>
+<div class="content main clear">
+    <div class="left">
+        <a href="javascript:;" class="my">我的歌手（<span>1</span>）</a>
+        <a href="javascript:;" class="my">我的MV（<span>4</span>）</a>
+        <div class="mylove clear">
+            <a href="javascript:;"  class="open" id="slid"><i class="fa fa-caret-right"></i>创建歌单（<span>1</span>）</a>
+            <a href="javascript:;" class="create">新建</a>
+        </div>
+        <div class="list" id="list">
+            <div class="pic">
+                <img src="../images/mylove_left_list.jpg"/>
+            </div>
+            <div class="writ">
+                <h2>我喜欢的音乐</h2>
+                <p>25首</p>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="top">
+            <div class="pic"><img src="../images/mylove_right_list.jpg"/></div>
+            <div class="person">
+                <h2><i></i>我喜欢的音乐</h2>
+                <div class="user">
+                    <img src="../images/mylove_right_user.jpg" height="31px">
+                    <a href="javascript:;">十一秒</a>
+                    <span>2015-07-07创建</span>
+                </div>
+                <div class="do">
+                    <div class="player">
+                        <a href="javascript:;" class="play">播放</a>
+                        <a href="javascript:;" class="add"></a>
+                    </div>
+                    <a href="javascript:;" class="shoucang">收藏</a>
+                    <a href="javascript:;" class="share">分享</a>
+                    <a href="javascript:;" class="download">下载</a>
+                    <a href="javascript:;" class="message"><span>(23)</span></a>
+                </div>
+            </div>
+            <div class="top_foot">
+                <h3>歌曲列表</h3>
+                <p class="song">25首</p>
+                <p class="number">播放：<span>44</span>次</p>
+            </div>
+        </div>
+        <div class="songs">
+            <table>
+                <thead>
+                <tr>
+                    <td></td>
+                    <td>歌曲标题</td>
+                    <td>时长</td>
+                    <td>歌手</td>
+                    <td>专辑</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="javascript:;"></a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="comment">
+            <div class="comment_header">
+                <h2>评论</h2>
+                <p>共<span>1</span>条评论</p>
+            </div>
+            <div class="comment_center clear">
+                <div class="pic"><img src="../images/mylove_comment_user.jpg"/></div>
+                <form id="comments">
+                    <i class="sanjiao"><</i>
+                    <textarea></textarea>
+                    <div class="release">
+                        <i class="smail"></i>
+                        <i class="font"></i>
+                        <button type="button" name="comment">评论</button>
+                        <span>140</span>
+                    </div>
+                </form>
+            </div>
+            <div class="comment_foot clear">
+                <div class="comment_foot_subheader">
+                    <p>最新评论（<span>1</span>）</p>
+                </div>
+                <ul class="comment_list clear" id="list_ul">
+                    <li class="clear">
+                        <a href="javascript:;" class="commenter"><img src="../images/mylove_comment_user.jpg"></a>
+                        <div class="inner">
+                            <div class="writ">
+                                <a href="javascript:;">是一秒</a>
+                                <span>dgfsegesdgdgwegrsegdsgfs </span>
+                            </div>
+                            <div class="more">
+                                <span class="time">昨天12：45</span>
+                                <p>
+                                    <a href="javascript:;" class="up"></a>|
+                                    <a href="javascript:;" class="reply">回复</a>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

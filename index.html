@@ -1,57 +1,666 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/14FY35435R60-259245_01.jpg"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
     <meta charset="UTF-8">
-    <title>Guanshanfan by youyouli</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Guanshanfan</h1>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/youyouli/guanshanfan" class="btn">View on GitHub</a>
-      <a href="https://github.com/youyouli/guanshanfan/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/youyouli/guanshanfan/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <title>网易云音乐、听见好时光</title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function(){
+   //nav 区域的背景图；
+            function nav_bj(){
+                // 划入事件
+                function huaru(){
+                    $(".nav a").each(function(){
+                        if(!$(this).hasClass("bc")){
+                            $(this).hover(function(){
+                                $(this).addClass("bc")
+                            },function(){
+                                $(this).removeClass("bc")
+                            })
+                        }else{
+                            $(this).hover(function(){
+                                $(this).addClass("bc")
+                            },function(){
+                                $(this).addClass("bc")
+                            })
+                        }
+                    })
+                }
+                huaru()
+                //点击事件
+                $(".nav a").click(function(){
+                    $(this).addClass("bc")
+                    $(this).parent().siblings().find("a").removeClass("bc")
+                    huaru()
+                })
+            }
+            nav_bj()
+  //banner区域轮播；
+            function banner(){
+                var data=[
+                    {"id":0,"src":"images/banner_100.jpg","bj":"#000"},
+                    {"id":1,"src":"images/banner_101.jpg","bj":"#000"},
+                    {"id":2,"src":"images/banner_102.jpg","bj":"#f9dee5"},
+                    {"id":3,"src":"images/banner_103.jpg","bj":"#eef3f9"},
+                    {"id":4,"src":"images/banner_104.jpg","bj":"#000"},
+                    {"id":5,"src":"images/banner_105.jpg","bj":"#5e2c2f"},
+                    {"id":6,"src":"images/banner_106.jpg","bj":"#d02e15"},
+                    {"id":7,"src":"images/banner_107.jpg","bj":"#f8f1e9"}
+                ]
+                        var banner_fn=function(index){
+                            $(".banner_1 .pic img").attr("src",data[index].src);
+                            $(".banner_bj").css("backgroundColor",data[index].bj);
+                            $(".banner_1 .center ul a ").css("backgroundColor","#fff").eq(index).css("backgroundColor","red")
+                        }
 
-    <section class="main-content">
-      <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+                        var list="";
+                        for(var l=0;l<data.length;l++){
+                            list+="<li><a href='#'></a></li>"
+                        }
+                        $(".banner_1 .center ul").append(list)
+                        var n=0;
+                        banner_fn(n)
+                        var time=null
+                        function timer(){
+                            time=setInterval(function(){
+                                n<data.length-1? n++:n=0;
+                                banner_fn(n)
+                            },3000)
+                        }
+                        timer()
+                        $(".banner_1 .center ul li a").each(function(index){
+                            $(this).click(function(){
+                                clearInterval(time)
+                                n=index;
+                                banner_fn(n)
+                                timer();
+                            })
+                        })
+                        $(".banner_1 .change_left").click(function(){
+                            clearInterval(time)
+                            n>0? n--:n=data.length-1;
+                            banner_fn(n)
+                            timer()
+                        })
+                        $(".banner_1 .change_right").click(function(){
+                            clearInterval(time)
+                            n<data.length-1? n++:n=0;
+                            banner_fn(n)
+                            timer()
+                        })
+            };
+            banner();
+  //热门推荐区域；
+            function hot(){
+                var data=[
+                    {"img":"images/section1.jpg","span":"42万","text":"『我唱我』用我的名字唱出最美的音符♬ ","sort":0},
+                    {"img":"images/section2.jpg","span":"39万","text":"韩语：霸气开场！hold不住的爆炸节奏 ","sort":0},
+                    {"img":"images/section3.jpg","span":"20万","text":"感性的，欢快的，心动的就是那颗少女心。 ","sort":0},
+                    {"img":"images/section4.jpg","span":"63万","text":" 你没听说过的户外活动 ","sort":1},
+                    {"img":"images/section5.jpg","span":"12万","text":"海洋的夜色钢琴 ","sort":0},
+                    {"img":"images/section6.jpg","span":"15万","text":" 诺拉琼斯东京专访之破晓时分 ","sort":1},
+                    {"img":"images/section7.jpg","span":"33万","text":"喜欢电音？一单就够了！ ","sort":0},
+                    {"img":"images/section8.jpg","span":"52万","text":"告白气球 ","sort":1}
+                ]
+                        for(var c=0;c<data.length-1;c++){
+                            $(".section_hot .inner ul").append($(".section_hot .inner ul li:first-child").clone())
+                        }
+                        $(".section_hot .inner ul li").each(function(index){
+                            $(this).find(".img img").attr("src",data[index].img);
+                            $(this).find(".img .model span").text(data[index].span);
+                            $(this).find(".text").text(data[index].text)
+                            if(data[index].sort==1){
+                                var $i=$("<i>");
+                                $i.css({"display":"inline-block","height":"20px","width":"36px","vertical-align":"middle","background":"url(images/icon.png) no-repeat -30px -657px"})
+                                $(this).find(".text").prepend($i)
+                            }
+                        })
+                        hover()
+                        out()
+            };
+            hot();
+  //个性化推荐；
+            function self(){
+                var data=[
+                    {"img":"images/self01.jpg","text":"游戏五杀超神必备音乐【持续更新】","sub_text":"根据你喜欢的单曲《告白气球》推荐","span":"23万"},
+                    {"img":"images/self02.jpg","text":"震不震自己体会【开车必听】","sub_text":"根据你喜欢的单曲《夏天》推荐","span":"45万"},
+                    {"img":"images/self03.jpg","text":"韩国hiphop入坑必备","sub_text":"根据你喜欢的单曲《solo》推荐","span":"30万"}
+                ]
+                        for(var c=0;c<data.length-1;c++){
+                            $(".section_selfdom .inner ul").append($(".section_selfdom .inner ul li:nth-child(2)").clone())
+                        }
+                        $(".section_selfdom .inner ul li:first-child").siblings().each(function(index){
+                            $(this).find(".img img").attr("src",data[index].img);
+                            $(this).find(".img .model span").text(data[index].span);
+                            $(this).find(".text").text(data[index].text)
+                            $(this).find(".hobites").text(data[index].sub_text)
+                        })
+                        hover()
+                        out()
+                var day=(new Date()).getDate()
+                $(".section_selfdom .inner ul li:first-child")
+                        .find(".img .date").text(day)
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
+            }
+            self();
+  //新碟上架无缝滚动；
+            function scroll(){
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
+                   var data=[
+                       {"img":"images/new_01.jpg","name":"彩虹金刚","songer":"孙燕姿"},
+                       {"img":"images/new_02.jpg","name":"Into The Shadow","songer":"Elenore埃莉诺乐队"},
+                       {"img":"images/new_03.jpg","name":"小精灵","songer":"TFBOYS"},
+                       {"img":"images/new_04.jpg","name":"WOST","songer":"V.A."},
+                       {"img":"images/new_05.jpg","name":"爱你知道","songer":"谢和玄"},
+                       {"img":"images/new_06.jpg","name":"Oh My My","songer":"OneRepublic"},
+                       {"img":"images/new_07.jpg","name":"不求人大乐队w","songer":"陈奂仁"},
+                       {"img":"images/new_08.jpg","name":"Illuminate (Deluxe)","songer":"Shawn Mendes"},
+                       {"img":"images/new_09.jpg","name":"FLIGHT LOG : TURBULENCE","songer":"GOT7"},
+                       {"img":"images/new_10.jpg","name":"JTW西游记","songer":"方大同"}
+                   ]
+                        var list="";
+                        for(var i=0;i<data.length;i++){
+                            list+=' <li>'+
+                                    '<a href="javascript:;" class="img">'+
+                                    '<i class="adorn"></i>'+
+                                    '<img src='+data[i].img+'/>'+
+                                    '<span class="model">'+
+                                    '<i class="fa fa-play-circle-o play"></i>'+
+                                    '</span>'+
+                                    '</a>'+
+                                    '<a href="javascript:;" class="text">'+data[i].name+'</a>'+
+                                    '<span class="hobites">'+data[i].songer+'</span>'+
+                                    '</li>'
+                        }
+                        $("#new").append(list)    //根据data动态插入li
+                        var li_outerwidth= $("#new li").outerWidth()  //确定每一个li的外尺寸；
+                        $("#new").css("width",data.length*li_outerwidth)   //给定ul的宽度；没有宽度的话是默认父级宽度
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
 
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+                        $("#new").parent().next().click(function(){   //右按钮点击事件    //jquery中transform再animate中不生效
+                            var dis= parseInt($("#new").css("marginLeft"))-li_outerwidth*5  //先移动ul
+                            $("#new").animate({marginLeft:dis+"px"},"slow",right_fn)  //动画效果；完毕后执行函数right_fn
+                            function right_fn(){
+                                $("#new li").each(function(index){    //遍历每一个li找出划过的li并把它删掉，再插到最后面
+                                    if(index<5){
+                                        $(this).remove()
+                                        $("#new").append($(this))   //jq没找的直接插入到dom对象最后面的方法；只能用after（）方法代替；
+                                    }
+                                })
+                                $("#new").css("marginLeft",0)   //别忘了把ul的margin-left还原为0；
+                            }
+                        })
+                        $("#new").parent().prev().click(function(){      //左按钮点击事件（方法与右按钮恰恰相反）
+                            $("#new").css("marginLeft",-li_outerwidth*5);  // 先移动ul并同时将末尾的五个元素删除添加到最前面
+                            var $first_li=$("#new li:first-child")
+                            $("#new li").each(function(index){
+                                if(index>=data.length-5){
+                                    $(this).remove()
+                                    $first_li.before($(this))
+                                }
+                            })
+                            var dis= parseInt($("#new").css("marginLeft"))+li_outerwidth*5   //正常滚动ul就可以了
+                            $("#new").animate({marginLeft:dis+"px"},"slow" )
+                        })
+                        hover()
+                        out()
+            };
+            scroll();
+   //榜单；
+            function list(){
+                var data={
+                    "up_song":[
+                        {"rank":"1","song":"Million Reasons"},
+                        {"rank":"2","song":"全世界谁倾听你"},
+                        {"rank":"3","song":"24K Magic"},
+                        {"rank":"4","song":"Future Looks Good"},
+                        {"rank":"5","song":"Kids"},
+                        {"rank":"6","song":"세 단어"},
+                        {"rank":"7","song":"麻雀"},
+                        {"rank":"8","song":"Wherever I Go"},
+                        {"rank":"9","song":"PPAP(说唱版)"},
+                        {"rank":"10","song":"秋名山的老司基 -"}
+                    ],
+                    "new_song":[
+                        {"rank":"1","song":"全世界谁倾听你"},
+                        {"rank":"2","song":"你在终点等我"},
+                        {"rank":"3","song":"致姗姗来迟的你 "},
+                        {"rank":"4","song":"Pen Pineapple Apple Pen"},
+                        {"rank":"5","song":"来日方长"},
+                        {"rank":"6","song":"电台情歌"},
+                        {"rank":"7","song":"《从你的全世界路过》插曲扒带"},
+                        {"rank":"8","song":"All We Know"},
+                        {"rank":"9","song":"Million Reasons"},
+                        {"rank":"10","song":"童话镇"}
+                    ],
+                    "self_song":[
+                        {"rank":"1","song":"致姗姗来迟的你"},
+                        {"rank":"2","song":"月 "},
+                        {"rank":"3","song":"如斯 "},
+                        {"rank":"4","song":"你喜欢海却不喜欢山"},
+                        {"rank":"5","song":"四季不败"},
+                        {"rank":"6","song":"往往"},
+                        {"rank":"7","song":"午夜芭蕾"},
+                        {"rank":"8","song":"爱晚亭下"},
+                        {"rank":"9","song":"爱我就现在"},
+                        {"rank":"10","song":"杳杳 "}
+                    ]
+                }
+                        //飙升榜
+                        $("#list_up dd").not($("#list_up dd:last-child")).each(function(index){
+                            $(this).find("a").html("<span>"+data.up_song[index].rank+"</span>"+data.up_song[index].song)
+                            if(index<3){
+                                $(this).find("a span").css("color",'#c10d0c')
+                            }
+                        })
+                        //新歌榜
+                        $("#list_new dd").not($("#list_new dd:last-child")).each(function(index){
+                            $(this).find("a").html("<span>"+data.new_song[index].rank+"</span>"+data.new_song[index].song)
+                            if(index<3){
+                                $(this).find("a span").css("color",'#c10d0c')
+                            }
+                        })
+                        //原创榜
+                        $("#list_self dd").not($("#list_self dd:last-child")).each(function(index){
+                            $(this).find("a").html("<span>"+data.self_song[index].rank+"</span>"+data.self_song[index].song)
+                            if(index<3){
+                                $(this).find("a span").css("color",'#c10d0c')
+                            }
+                        })
+            }
+            list()
+   //入住歌手；
+            function join_songer(){
+                var data=[
+                    {"img":"images/songer01.jpg","name":"张惠妹aMEI","explain":"台湾歌手张惠妹"},
+                    {"img":"images/songer02.jpg","name":"尚雯婕","explain":"原创电子唱作人"},
+                    {"img":"images/songer03.jpg","name":"羽泉组合","explain":"国内知名演唱组合 羽泉"},
+                    {"img":"images/songer04.jpg","name":"李志","explain":"网易音乐人"},
+                    {"img":"images/songer05.jpg","name":"马頔麻油叶","explain":"网易音乐人"}
+                ]
+                        $("#join_songer li").each(function(index){
+                            $(this).find(".star img").attr("src",data[index].img)
+                            $(this).find(".star .text_war h2 a").text(data[index].name)
+                            $(this).find(".star .text_war p").text(data[index].explain)
+                        })
+            }
+            join_songer()
+   //入住DJ
+            function join_DJ(){
+              var data=[
+                    {"img":"images/Dj01.jpg","name":"灵伟","explain":"电台DJ、资深乐评人"},
+                    {"img":"images/Dj02.jpg","name":"庞舸","explain":"深圳电台飞扬971主持人"},
+                    {"img":"images/Dj03.jpg","name":"林海7","explain":"著名音乐节目主持人"},
+                    {"img":"images/Dj04.jpg","name":"阿鹏叔","explain":"桒惪SOUND创办人"},
+                    {"img":"images/Dj05.jpg","name":"DJ晓苏","explain":" 独立DJ，"}
+                ]
+                        $("#join_DJ li").each(function(index){
+                            $(this).find(".pic img").attr("src",data[index].img)
+                            $(this).find(".text_war .name").html(data[index].name+'<i class="fa fa-font"></i>')
+                            $(this).find(".text_war p").text(data[index].explain)
+                        })
+            }
+            join_DJ()
+   //hot图片鼠标划入事件
+            function hover(){
+                $(".content .section_hot .inner ul a[class='img']").mouseover(function(){
+                    $(this).find(".model").show()
+                }).mouseout("mouseout",function(){
+                    $(this).find(".model").hide()
+                })
+            }
+            hover()
+    //文字鼠标划入事件
+            function out(){
+                $(".content a[class$='text']").mouseover(function(){
+                    $(this).css({"textDecoration":"underline","color":"#666"})
+                }).mouseout(function(){
+                    $(this).css({"textDecoration":"none","color":""})
+                })
+            }
+            out()
+        })
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+    </script>
 
-<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/youyouli/guanshanfan">Guanshanfan</a> is maintained by <a href="https://github.com/youyouli">youyouli</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
+</head>
+<body>
+<div class="header_bj" id="start">
+    <div class="header main">
+        <a href="#"  class="logo"></a>
+        <ul>
+            <li><a href="#"><em>发现音乐</em></a><i class='sanjiao'></i></li>
+            <li><a href="views/mymusic.html"><em>我的音乐</em></a></li>
+            <li><a href="views/friend.html"><em>朋友</em></a></li>
+            <li><a href="views/download.html"><em>下载客户端</em></a><i class="hot"></i></li>
+        </ul>
+        <form>
+            <input type="text" />
+        </form>
+        <a href="javascript:;" class="message"><i>2</i></a>
+        <a href="javascript:;"  class="ID"><em>十一秒</em><i></i></a>
+        <a href="javascript:;" class="user"></a>
+    </div>
+</div>
+<div class="nav_bj">
+    <div class="nav main">
+        <ul>
+            <li><a href="javascript:;" class="bc">推荐</a></li>
+            <li><a href="javascript:;">排行榜</a></li>
+            <li><a href="javascript:;">歌单</a></li>
+            <li><a href="javascript:;">主播电台</a></li>
+            <li><a href="javascript:;">歌手</a></li>
+            <li><a href="javascript:;">新碟上架</a></li>
+        </ul>
+    </div>
+</div>
+<div class="banner_bj">
+        <div class="banner banner_1 main">
+            <div class="center"><a href="javascript:;" class="pic"><img src="images/banner_107.jpg" height="335px" width="731px" /></a>
+                <ul>
+                </ul>
+            </div>
+            <div class="down_load">
+                <a href="javascript:;"></a>
+            </div>
+            <a href="javascript:;" class="change_left"></a>
+            <a href="javascript:;" class="change_right"></a>
+        </div>
+</div>
+<div class="content main clear">
+    <div class="left">
+        <div class="section section_hot clear">
+            <div class="header">
+                <dl>
+                    <dt><span></span>热门推荐</dt>
+                    <dd><a href="javascript:;">华语</a></dd><span class="rule">|</span>
+                    <dd><a href="javascript:;">流行</a></dd><span class="rule">|</span>
+                    <dd><a href="javascript:;">摇滚</a></dd><span class="rule">|</span>
+                    <dd><a href="javascript:;">民谣</a></dd><span class="rule">|</span>
+                    <dd><a href="javascript:;">电子</a></dd>
+                </dl>
+                <p>
+                    <a href="javascript:;">更多</a>
+                    <span class="fa fa-arrow-right"></span>
+                </p>
+            </div>
+            <div class="inner">
+                <ul>
+                    <li>
+                        <a href="javascript:;" class="img">
+                            <i class="light"></i>
+                            <img src="images/section1.jpg"/>
+                            <span class="model">
+                                <i class="fa fa-smile-o"></i>
+                                <span>42万</span>
+                                <i class="fa fa-play-circle-o play"></i>
+                            </span>
+                        </a>
+                        <a href="javascript:;" class="text">和自己对话邂逅最好的自己</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="section section_selfdom  clear">
+            <div class="header">
+                <dl>
+                    <dt><span></span>个性化推荐</dt>
+                </dl>
+            </div>
+            <div class="inner">
+                <ul class="clear">
+                    <li>
+                        <a href="javascript:;" class="img">
+                            <i class="light"></i>
+                            <i class="date">8</i>
+                        </a>
+                        <a href="javascript:;" class="text">每日歌曲推荐</a>
+                        <span class="hobites">根据你的口味，每日6：00更新</span>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="img">
+                            <img src="images/section1.jpg"/>
+                            <i class="light"></i>
+                            <span class="model">
+                                <i class="fa fa-smile-o"></i>
+                                <span>42万</span>
+                                <i class="fa fa-play-circle-o play"></i>
+                            </span>
+                        </a>
+                        <a href="javascript:;" class="text">每日歌曲推荐</a>
+                        <span class="hobites">根据你的口味，每日6：00更新</span>
+                    </li>
+                </ul>
+                <div class="adver">
+                    <img src="images/adver.jpg"/>
+                </div>
+            </div>
+        </div>
+        <div class="section section_new clear">
+            <div class="header">
+                <dl>
+                    <dt><span></span>新碟上架</dt>
+                </dl>
+                <p>
+                    <a href="javascript:;">更多</a>
+                    <span class="fa fa-arrow-right"></span>
+                </p>
+            </div>
+            <div class="inner clear">
+                <a class="inner_a"></a>
+                <div class="war">
+                    <ul class="clear" id="new">
+                    </ul>
+                </div>
+                <a  class="inner_a"></a>
+            </div>
+        </div>
+        <div class="section section_list clear">
+            <div class="header">
+                <dl>
+                    <dt><span></span>榜单</dt>
+                </dl>
+                <p>
+                    <a href="javascript:;">更多</a>
+                    <span class="fa fa-arrow-right"></span>
+                </p>
+            </div>
+            <div class="inner clear">
+                    <dl class="list up" id="list_up">
+                        <dt class="sub_header clear">
+                            <a href="javascript:;" class="logo"><img src="images/up_logo.jpg" width="80px"/><i></i><i class="light"></i></a>
+                            <div class="do">
+                                <h2>云音乐飙升榜</h2>
+                                <i class="fa fa-play-circle-o"></i>
+                                <i class="fa fa-file-o"></i>
+                            </div>
+                        </dt>
+                        <dd><a href="javascript:;"><span>1</span>The Bye</a></dd>
+                        <dd><a href="javascript:;"><span>2</span>结婚</a></dd>
+                        <dd><a href="javascript:;"><span>3</span>One Day</a></dd>
+                        <dd><a href="javascript:;"><span>4</span>AIR</a></dd>
+                        <dd><a href="javascript:;"><span>5</span>时光正好</a></dd>
+                        <dd><a href="javascript:;"><span>6</span>2infinity And Beyond</a></dd>
+                        <dd><a href="javascript:;"><span>7</span>Telephy</a></dd>
+                        <dd><a href="javascript:;"><span>8</span>追梦人</a></dd>
+                        <dd><a href="javascript:;"><span>9</span>野百合也有春天</a></dd>
+                        <dd><a href="javascript:;"><span>10</span>儿时</a></dd>
+                        <dd><a class="findall text" href="javascript:;">查看全部></a></dd>
+                    </dl>
+                    <dl class="list new" id="list_new">
+                        <dt class="sub_header clear">
+                            <a href="javascript:;" class="logo"><img src="images/new_logo.jpg" width="80px"/><i></i><i class="light"></i></a>
+                            <div class="do">
+                                <h2>云音乐新歌榜</h2>
+                                <i class="fa fa-play-circle-o"></i>
+                                <i class="fa fa-file-o"></i>
+                            </div>
+                        </dt>
+                        <dd><a href="javascript:;"><span>1</span>The Bye</a></dd>
+                        <dd><a href="javascript:;"><span>2</span>结婚</a></dd>
+                        <dd><a href="javascript:;"><span>3</span>One Day</a></dd>
+                        <dd><a href="javascript:;"><span>4</span>AIR</a></dd>
+                        <dd><a href="javascript:;"><span>5</span>时光正好</a></dd>
+                        <dd><a href="javascript:;"><span>6</span>2infinity And Beyond</a></dd>
+                        <dd><a href="javascript:;"><span>7</span>Telephy</a></dd>
+                        <dd><a href="javascript:;"><span>8</span>追梦人</a></dd>
+                        <dd><a href="javascript:;"><span>9</span>野百合也有春天</a></dd>
+                        <dd><a href="javascript:;"><span>10</span>儿时</a></dd>
+                        <dd><a class="findall text" href="javascript:;">查看全部></a></dd>
+                    </dl>
+                    <dl class="list self" id="list_self">
+                        <dt class="sub_header clear">
+                            <a href="javascript:;" class="logo"><img src="images/self_logo.jpg" width="80px"/><i></i><i class="light"></i></a>
+                            <div class="do">
+                                <h2>网易原创歌曲榜</h2>
+                                <i class="fa fa-play-circle-o"></i>
+                                <i class="fa fa-file-o"></i>
+                            </div>
+                        </dt>
+                        <dd><a href="javascript:;"><span>1</span>The Bye</a></dd>
+                        <dd><a href="javascript:;"><span>2</span>结婚</a></dd>
+                        <dd><a href="javascript:;"><span>3</span>One Day</a></dd>
+                        <dd><a href="javascript:;"><span>4</span>AIR</a></dd>
+                        <dd><a href="javascript:;"><span>5</span>时光正好</a></dd>
+                        <dd><a href="javascript:;"><span>6</span>2infinity And Beyond</a></dd>
+                        <dd><a href="javascript:;"><span>7</span>Telephy</a></dd>
+                        <dd><a href="javascript:;"><span>8</span>追梦人</a></dd>
+                        <dd><a href="javascript:;"><span>9</span>野百合也有春天</a></dd>
+                        <dd><a href="javascript:;"><span>10</span>儿时</a></dd>
+                        <dd><a class="findall text" href="javascript:;">查看全部></a></dd>
+                    </dl>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="person">
+            <div class="top clear">
+                <div class="pic"><img src="images/section3.jpg" width="80px"/></div>
+                <div class="message">
+                    <h2><a href="javascript:;" class="text">十一秒</a></h2>
+                    <i class="lv">4</i>
+                    <i class="lv_right"></i><br>
+                    <a class="button" href="javascript:;">签到</a>
+                </div>
+            </div>
+            <a class="dongtai" href="javascript:;"><span>0</span><br><em>动态</em></a>
+            <a class="guanzhu" href="javascript:;"><span>5</span><br><em>关注</em></a>
+            <a class="fensi" href="javascript:;"><span>3</span><br><em>粉丝</em></a>
+        </div>
+        <div class="service songer">
+            <div class="service_header clear">
+                <h2>入驻歌手</h2>
+                <a href="javascript:;" class="text">查看全部></a>
+            </div>
+            <ul id="join_songer">
+                <li>
+                    <div class="star">
+                        <a href="javascript:;"><img src="images/songer01.jpg" height="62px"></a>
+                        <div class="text_war">
+                            <h2><a href="javascript:;" class="text">张惠妹aMEI</a></h2>
+                            <p>台湾歌手张惠妹</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="star">
+                        <a href="javascript:;"><img src="images/songer01.jpg" height="62px"></a>
+                        <div class="text_war">
+                            <h2><a href="javascript:;" class="text">张惠妹aMEI</a></h2>
+                            <p>台湾歌手张惠妹</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="star">
+                        <a href="javascript:;"><img src="images/songer01.jpg" height="62px"></a>
+                        <div class="text_war">
+                            <h2><a href="javascript:;" class="text">张惠妹aMEI</a></h2>
+                            <p>台湾歌手张惠妹</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="star">
+                        <a href="javascript:;"><img src="images/songer01.jpg" height="62px"></a>
+                        <div class="text_war">
+                            <h2><a href="javascript:;" class="text">张惠妹aMEI</a></h2>
+                            <p>台湾歌手张惠妹</p>
+                        </div>
+                    </div>
+                </li>
+                <a class="entry" href="javascript:;">申请成为网易音乐人</a>
+            </ul>
+        </div>
+        <div class="service Dj">
+            <div class="service_header clear">
+                <h2>热门DJ</h2>
+                <a href="javascript:;" class="text">查看全部></a>
+            </div>
+            <ul id="join_DJ">
+                <li class="clear">
+                    <a class="pic" href="javascript:;"><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war">
+                        <a class="name text" href="javascript:;" >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <a class="pic" href="javascript:;"><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war">
+                        <a class="name text" href="javascript:;" >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <a class="pic" href="javascript:;"><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war" >
+                        <a class="name text" href="javascript:;" >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <a class="pic" href="javascript:;"><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war">
+                        <a class="name text" href="javascript:;" >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <a class="pic" href="javascript:;"><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war">
+                        <a class="name text" href="javascript:;" >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="footer_bj">
+    <div class="footer main">
+        <div class="aside">
+            <div class="pic_1"></div>
+            <p>独立音乐人招募计划</p>
+            <p>加入我们即将与亿万乐迷互动</p>
+        </div>
+        <div class="aside">
+            <div class="pic_2"></div>
+            <p>音乐专栏招募计划</p>
+            <p>加入我们与同道中人交流心得</p>
+        </div>
+        <p class="about">
+            <a href="javascript:;">关于网易</a>-<a href="javascript:;"> 客户服务</a>- <a href="javascript:;">服务条款</a>-<a href="javascript:;">网站导航</a>网易公司版权所有©1997-2016<br>
+            杭州网易雷火科技有限公司运营：<a href="javascript:;">浙网文[2016]0155-055号</a> <i></i><a href="javascript:;">意见反馈</a>
+        </p>
+    </div>
+</div>
+<a id="top" href="#start">
+    ^<br>TOP
+</a>
+</body>
 </html>

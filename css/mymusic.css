@@ -1,0 +1,72 @@
+.content{margin-top:73px;}
+.content .left{width:240px;float:left;padding-top:40px;height:1000px}
+.content .left .my{display:block;padding-left:20px;line-height:36px;font-size:14px;font-weight:bold;}
+.content .left .mylove{padding-left:20px;height:36px;}
+.content .left .mylove .open{display:block;float:left;line-height:36px;font-size:14px;font-weight:bold;}
+.content .left .mylove .open i{font-size:16px;color:#ccc;margin-right:8px;vertical-align: middle;}
+.content .left .mylove .create{display:block;float:right;padding:0 9px 0 20px;margin:5px 10px 0 0;font-size:12px;border-right:1px solid #ccc;border-radius: 0 5px 5px 0;
+                                    line-height:26px;background:url("../images/mylove_icon.png") no-repeat -100px -42px;background-size:160px;}
+.content .left .list{height:54px;padding:8px 0 0 20px;display:none}
+.content .left .list .pic{float:left;height:40px;width:40px;}
+.content .left .list .writ{float:left;margin-left:10px;}
+.content .left .list .writ h2{line-height:18px;font-size:12px;margin-bottom:10px;}
+.content .left .list .writ p{font-size:12px;color:#ccc;}
+.content .right{float:left;width:738px;border-left:1px solid #ccc;}
+.content .right .top{height:312px;padding:35px 0 0 35px;position:relative;}
+.content .right .top .pic{float:left;height:200px;width:200px;padding:3px;border:1px solid #ccc;}
+.content .right .top .person{float:left;margin-left:26px;}
+.content .right .top .person h2{line-height:33px;font-size:18px;}
+.content .right .top .person h2 i{display:inline-block;height:25px;width:60px;background: url("../images/icon.png") no-repeat 0px -244px;
+                                        vertical-align: middle}
+.content .right .top .person .user{height:31px;margin-top:9px;}
+.content .right .top .person .user img{vertical-align: middle}
+.content .right .top .person .user a{margin-left:12px;font-size:12px;color:blue;}
+.content .right .top .person .user span{margin-left:15px;color:#ccc;font-size:12px;}
+.content .right .top .person .do{margin-top:22px;}
+.content .right .top .person .do .player{display:inline-block}
+.content .right .top .person .do .player .play{display:inline-block;line-height:32px;width:36px;padding-left:35px;font-size:12px;
+                                                color:#fff;background:url("../images/mylove_right_do.png") no-repeat 0px -806px;}
+.content .right .top .person .do .player .add{display:inline-block;vertical-align: middle;height:32px;width:25px;padding-left:5px;
+                                               color:#fff;border-radius: 0 5px 5px 0;background:url("../images/mylove_right_do.png") no-repeat 0 -1589px;margin-left:-12px}
+.content .right .top .person .do .shoucang{margin-left:5px;display:inline-block;line-height:32px;font-size:12px;color:#ccc;border-radius:0 5px 5px 0 ;border-right:1px solid #ccc;padding:0 8px 0 28px;background:url("../images/mylove_right_do.png") no-repeat 0 -1354px;}
+.content .right .top .person .do .share{margin-left:5px;display:inline-block;line-height:32px;font-size:12px;color:#666;border-radius:0 5px 5px 0 ;border-right:1px solid #ccc;padding:0 8px 0 28px;background:url("../images/mylove_right_do.png") no-repeat 0 -1225px;}
+.content .right .top .person .do .download{margin-left:5px;display:inline-block;line-height:32px;font-size:12px;color:#666;border-radius:0 5px 5px 0 ;border-right:1px solid #ccc;padding:0 8px 0 28px;background:url("../images/mylove_right_do.png") no-repeat 0 -2760px;}
+.content .right .top .person .do .message{margin-left:5px;display:inline-block;line-height:32px;font-size:12px;color:#666;border-radius:0 5px 5px 0 ;border-right:1px solid #ccc;padding:0 8px 0 28px;background:url("../images/mylove_right_do.png") no-repeat 0 -1465px;}
+.content .right .top .top_foot{width:710px;position:absolute;bottom:0;left:30px;}
+.content .right .top .top_foot h3{float:left;line-height:36px;font-size:20px;font-weight:normal}
+.content .right .top .top_foot .song{float:left;margin-left:20px;color:#666;margin-top:15px;font-size:12px}
+.content .right .top .top_foot .number{float:right;margin-right:10px;font-size:12px;margin-top:15px;color:#666}
+.content .right .top .top_foot .number span{color:#c20c0c}
+.content .right .songs table{width:740px;border-collapse: collapse;table-layout: fixed;border-top:2px solid #c20c0c ;border-bottom:1px solid #ccc;}
+.content .right .songs table tr td{height:34px;}
+.content .right .songs table thead tr:first-child td{border:1px solid #ccc;color:#666;line-height:34px;padding-left:6px;font-size:12px}
+.content .right .songs table tbody tr td{color:#666;line-height:34px;padding-left:10px;font-size:12px;}
+.content .right .songs table tr td:first-child{width:60px;padding-left:15px;text-overflow:ellipsis;overflow:hidden;}
+.content .right .songs table tbody tr td:first-child a{display:inline-block;height:18px;width:18px;background:url("../images/icon.png") no-repeat -45px -635px;float:right;margin:8px 10px 0 0}
+.content .right .comment{padding-top:35px;}
+.content .right .comment .comment_header{padding-left:35px;border-bottom:2px solid #c20c0c;}
+.content .right .comment .comment_header h2{line-height:38px;font-size:18px;display:inline-block;font-weight:normal}
+.content .right .comment .comment_header p{display:inline-block;font-size:12px;color:#666;margin-left:19px;}
+.content .right .comment .comment_center{padding:20px 0 19px 35px;}
+.content .right .comment .comment_center .pic{height:50px;width:50px;float:left;}
+.content .right .comment .comment_center form{height:98px;margin-left:13px;float:left;position:relative}
+.content .right .comment .comment_center form textarea{height:60px;width:600px;border:1px solid #ccc;border-radius:3px;resize: none;}
+.content .right .comment .comment_center form .sanjiao{display:block;border-right:1px solid #fff;position:absolute;top:13px;left:-7px;font-size:12px;color:#ccc}
+.content .right .comment .comment_center form .release{margin-top:9px;height:26px;}
+.content .right .comment .comment_center form .release .smail{display:inline-block;height:18px;width:18px;background:url("../images/icon.png") no-repeat -40px -490px;margin-right:10px }
+.content .right .comment .comment_center form .release .font{display:inline-block;height:18px;width:18px;background:url("../images/icon.png") no-repeat -59px -490px; }
+.content .right .comment .comment_center form .release span{display:inline-block;line-height:26px;font-size:12px;color:#ccc;float:right;margin-right:10px;}
+.content .right .comment .comment_center form .release button{display:inline-block;vertical-align:middle;color:#fff;border-radius:3px;float:right;padding:0 10px;line-height:26px;background:url("../images/mylove_right_do.png") -10px -472px}
+.content .right .comment .comment_foot{padding:0 30px;}
+.content .right .comment .comment_foot ul li{padding-bottom:20px;border-bottom:1px solid #cccccc;margin-bottom:20px}
+.content .right .comment .comment_foot .comment_foot_subheader{height:23px;border-bottom:1px solid #ccc;}
+.content .right .comment .comment_foot .comment_foot_subheader p{line-height:23px;font-size:12px;}
+.content .right .comment .comment_foot .comment_list{padding:16px 0 30px 0;border-bottom:1px solid #ccc}
+.content .right .comment .comment_foot .comment_list .commenter{display:inline-block;height:50px;width:50px;float:left;margin-right:10px;}
+.content .right .comment .comment_foot .comment_list .inner{float:left;width:617px;}
+.content .right .comment .comment_foot .comment_list .inner .writ{padding-bottom:23px;font-size:12px;}
+.content .right .comment .comment_foot .comment_list .inner .writ a{color:#0c73c2}
+.content .right .comment .comment_foot .comment_list .inner .more .time{color:#ccc;font-size:12px;}
+.content .right .comment .comment_foot .comment_list .inner .more p{float:right;color:#ccc}
+.content .right .comment .comment_foot .comment_list .inner .more p .up{display:inline-block;vertical-align: bottom;margin:0 10px;height:16px;width:16px;background:url("../images/icon.png") no-repeat -34px -678px;}
+.content .right .comment .comment_foot .comment_list .inner .more p .reply{font-size:12px;color:#ccc;margin-left:10px}

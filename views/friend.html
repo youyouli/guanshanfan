@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>朋友</title>
+    <link rel="stylesheet" href="../css/viewspublic.css"/>
+    <link rel="stylesheet" href="../css/friend.css"/>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function(){
+            //入住歌手；
+            function join_songer(){
+                var data=[
+                    {"img":"../images/songer01.jpg","name":"张惠妹aMEI","explain":"台湾歌手张惠妹"},
+                    {"img":"../images/songer02.jpg","name":"尚雯婕","explain":"原创电子唱作人"},
+                    {"img":"../images/songer03.jpg","name":"羽泉组合","explain":"国内知名演唱组合 羽泉"},
+                    {"img":"../images/songer04.jpg","name":"李志","explain":"网易音乐人"},
+                    {"img":"../images/songer05.jpg","name":"马頔麻油叶","explain":"网易音乐人"}
+                ]
+                        $("#join_songer li").each(function(index){
+                            $(this).find(".star img").attr("src",data[index].img)
+                            $(this).find(".star .text_war h2 a").text(data[index].name)
+                            $(this).find(".star .text_war p").text(data[index].explain)
+                        })
+            }
+            join_songer()
+            //入住DJ
+            function join_DJ(){
+                var data=[
+                    {"img":"../images/Dj01.jpg","name":"灵伟","explain":"电台DJ、资深乐评人"},
+                    {"img":"../images/Dj02.jpg","name":"庞舸","explain":"深圳电台飞扬971主持人"},
+                    {"img":"../images/Dj03.jpg","name":"林海7","explain":"著名音乐节目主持人"},
+                    {"img":"../images/Dj04.jpg","name":"阿鹏叔","explain":"桒惪SOUND创办人"},
+                    {"img":"../images/Dj05.jpg","name":"DJ晓苏","explain":" 独立DJ，"}
+                ]
+                        $("#join_DJ li").each(function(index){
+                            $(this).find(".pic img").attr("src",data[index].img)
+                            $(this).find(".text_war .name").html(data[index].name+'<i class="fa fa-font"></i>')
+                            $(this).find(".text_war p").text(data[index].explain)
+                        })
+            }
+            join_DJ()
+            //hot图片鼠标划入事件
+            function hover(){
+                $(".content .section_hot .inner ul a[class='img']").mouseover(function(){
+                    $(this).find(".model").show()
+                }).mouseout("mouseout",function(){
+                    $(this).find(".model").hide()
+                })
+            }
+            hover()
+            //文字鼠标划入事件
+            function out(){
+                $(".content a[class$='text']").mouseover(function(){
+                    $(this).css({"textDecoration":"underline","color":"#666"})
+                }).mouseout(function(){
+                    $(this).css({"textDecoration":"none","color":""})
+                })
+            }
+            out()
+        })
+    </script>
+</head>
+<body>
+<div class="header_bj" id="start">
+    <div class="header main">
+        <a href="javascript:;"  class="logo"></a>
+        <ul>
+            <li><a  href="../index.html"><em>发现音乐</em></a></li>
+            <li><a  href="mymusic.html"><em>我的音乐</em></a></li>
+            <li><a  href="#"><em>朋友</em></a><i class='sanjiao'></i></li>
+            <li><a  href="download.html"><em>下载客户端</em></a><i class="hot"></i></li>
+        </ul>
+        <form>
+            <input type="text" />
+        </form>
+        <a  href="javascript:;" class="message"><i>2</i></a>
+        <a  href="javascript:;"  class="ID"><em>十一秒</em><i></i></a>
+        <a  href="javascript:;" class="user"></a>
+    </div>
+</div>
+<div class="content main ">
+    <div class="left">
+        <div class="subheader">动态</div>
+        <ul>
+            <li>
+                <div class="friends clear">
+                    <div class="pic"><a href="javascript:;"><img src="../images/friend_user.jpg"></a></div>
+                    <div class="share">
+                        <a href="javascript:;">十一秒</a>
+                        <span>分享单曲</span>
+                        <p>昨天7:20</p>
+                    </div>
+                    <div class="guanzhu">
+                        <a href="javascript:;"><span>+</span>关注</a>
+                    </div>
+                </div>
+                <div class="inner">
+                    <P class="writ"></P>
+                    <div class="song clear">
+                        <div class="pic">
+                            <img src="../images/friend_play.jpg">
+                            <a href="javascript:;"><i></i></a>
+                        </div>
+                        <div class="message">
+                            <a href="javascript:;" class="name">太想爱你</a><br>
+                            <a href="javascript:;" class="songer">张信哲</a>
+                        </div>
+                    </div>
+                    <div class="big_pic">
+                        <a href="javascript:;"><img src="../images/friend_inner.jpg"></a>
+                    </div>
+                    <div class="li_foot">
+                        <p>—— 根据你喜欢的 光良 推荐</p>
+                        <a href="javascript:;" class="comment">评论（119）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="share">转发（21）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="up"><i></i>(895)</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="friends clear">
+                    <div class="pic"><a href="javascript:;"><img src="../images/friend_user.jpg"></a></div>
+                    <div class="share">
+                        <a href="javascript:;">十一秒</a>
+                        <span>分享单曲</span>
+                        <p>昨天7:20</p>
+                    </div>
+                    <div class="guanzhu">
+                        <a href="javascript:;"><span>+</span>关注</a>
+                    </div>
+                </div>
+                <div class="inner">
+                    <P class="writ"></P>
+                    <div class="song clear">
+                        <div class="pic">
+                            <img src="../images/friend_play.jpg">
+                            <a href="javascript:;"><i></i></a>
+                        </div>
+                        <div class="message">
+                            <a href="javascript:;" class="name">太想爱你</a><br>
+                            <a href="javascript:;" class="songer">张信哲</a>
+                        </div>
+                    </div>
+                    <div class="big_pic">
+                        <a href="javascript:;"><img src="../images/friend_inner.jpg"></a>
+                    </div>
+                    <div class="li_foot">
+                        <p>—— 根据你喜欢的 光良 推荐</p>
+                        <a href="javascript:;" class="comment">评论（119）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="share">转发（21）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="up"><i></i>(895)</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="friends clear">
+                    <div class="pic"><a href="javascript:;"><img src="../images/friend_user.jpg"></a></div>
+                    <div class="share">
+                        <a href="javascript:;">十一秒</a>
+                        <span>分享单曲</span>
+                        <p>昨天7:20</p>
+                    </div>
+                    <div class="guanzhu">
+                        <a href="javascript:;"><span>+</span>关注</a>
+                    </div>
+                </div>
+                <div class="inner">
+                    <P class="writ"></P>
+                    <div class="song clear">
+                        <div class="pic">
+                            <img src="../images/friend_play.jpg">
+                            <a href="javascript:;"><i></i></a>
+                        </div>
+                        <div class="message">
+                            <a href="javascript:;" class="name">太想爱你</a><br>
+                            <a href="javascript:;" class="songer">张信哲</a>
+                        </div>
+                    </div>
+                    <div class="big_pic">
+                        <a href="javascript:;"><img src="../images/friend_inner.jpg"></a>
+                    </div>
+                    <div class="li_foot">
+                        <p>—— 根据你喜欢的 光良 推荐</p>
+                        <a href="javascript:;" class="comment">评论（119）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="share">转发（21）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="up"><i></i>(895)</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="friends clear">
+                    <div class="pic"><a href="javascript:;"><img src="../images/friend_user.jpg"></a></div>
+                    <div class="share">
+                        <a href="javascript:;">十一秒</a>
+                        <span>分享单曲</span>
+                        <p>昨天7:20</p>
+                    </div>
+                    <div class="guanzhu">
+                        <a href="javascript:;"><span>+</span>关注</a>
+                    </div>
+                </div>
+                <div class="inner">
+                    <P class="writ"></P>
+                    <div class="song clear">
+                        <div class="pic">
+                            <img src="../images/friend_play.jpg">
+                            <a href="javascript:;"><i></i></a>
+                        </div>
+                        <div class="message">
+                            <a href="javascript:;" class="name">太想爱你</a><br>
+                            <a href="javascript:;" class="songer">张信哲</a>
+                        </div>
+                    </div>
+                    <div class="big_pic">
+                        <a href="javascript:;"><img src="../images/friend_inner.jpg"></a>
+                    </div>
+                    <div class="li_foot">
+                        <p>—— 根据你喜欢的 光良 推荐</p>
+                        <a href="javascript:;" class="comment">评论（119）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="share">转发（21）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="up"><i></i>(895)</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="friends clear">
+                    <div class="pic"><a href="javascript:;"><img src="../images/friend_user.jpg"></a></div>
+                    <div class="share">
+                        <a href="javascript:;">十一秒</a>
+                        <span>分享单曲</span>
+                        <p>昨天7:20</p>
+                    </div>
+                    <div class="guanzhu">
+                        <a href="javascript:;"><span>+</span>关注</a>
+                    </div>
+                </div>
+                <div class="inner">
+                    <P class="writ"></P>
+                    <div class="song clear">
+                        <div class="pic">
+                            <img src="../images/friend_play.jpg">
+                            <a href="javascript:;"><i></i></a>
+                        </div>
+                        <div class="message">
+                            <a href="javascript:;" class="name">太想爱你</a><br>
+                            <a href="javascript:;" class="songer">张信哲</a>
+                        </div>
+                    </div>
+                    <div class="big_pic">
+                        <a href="javascript:;"><img src="../images/friend_inner.jpg"></a>
+                    </div>
+                    <div class="li_foot">
+                        <p>—— 根据你喜欢的 光良 推荐</p>
+                        <a href="javascript:;" class="comment">评论（119）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="share">转发（21）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="up"><i></i>(895)</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="friends clear">
+                    <div class="pic"><a href="javascript:;"><img src="../images/friend_user.jpg"></a></div>
+                    <div class="share">
+                        <a href="javascript:;">十一秒</a>
+                        <span>分享单曲</span>
+                        <p>昨天7:20</p>
+                    </div>
+                    <div class="guanzhu">
+                        <a href="javascript:;"><span>+</span>关注</a>
+                    </div>
+                </div>
+                <div class="inner">
+                    <P class="writ"></P>
+                    <div class="song clear">
+                        <div class="pic">
+                            <img src="../images/friend_play.jpg">
+                            <a href="javascript:;"><i></i></a>
+                        </div>
+                        <div class="message">
+                            <a href="javascript:;" class="name">太想爱你</a><br>
+                            <a href="javascript:;" class="songer">张信哲</a>
+                        </div>
+                    </div>
+                    <div class="big_pic">
+                        <a href="javascript:;"><img src="../images/friend_inner.jpg"></a>
+                    </div>
+                    <div class="li_foot">
+                        <p>—— 根据你喜欢的 光良 推荐</p>
+                        <a href="javascript:;" class="comment">评论（119）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="share">转发（21）</a>
+                        <span>|</span>
+                        <a href="javascript:;" class="up"><i></i>(895)</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="person">
+            <div class="top clear">
+                <div class="pic"><img src="../images/section3.jpg" width="80px"/></div>
+                <div class="message">
+                    <h2><a href="javascript:;"  class="text">十一秒</a></h2>
+                    <i class="lv">4</i>
+                    <i class="lv_right"></i><br>
+                    <a href="javascript:;" class="button" >签到</a>
+                </div>
+            </div>
+            <a href="javascript:;" class="dongtai" ><span>0</span><br><em>动态</em></a>
+            <a href="javascript:;" class="guanzhu" ><span>5</span><br><em>关注</em></a>
+            <a href="javascript:;" class="fensi" ><span>3</span><br><em>粉丝</em></a>
+        </div>
+        <div class="service songer">
+            <div class="service_header clear">
+                <h2>入驻歌手</h2>
+                <a href="javascript:;"  class="text">查看全部></a>
+            </div>
+            <ul id="join_songer">
+                <li>
+                    <div class="star">
+                        <a href="javascript:;" ><img src="images/songer01.jpg" height="62px"></a>
+                        <div class="text_war">
+                            <h2><a href="javascript:;"  class="text">张惠妹aMEI</a></h2>
+                            <p>台湾歌手张惠妹</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="star">
+                        <a href="javascript:;" ><img src="images/songer01.jpg" height="62px"></a>
+                        <div class="text_war">
+                            <h2><a href="javascript:;"  class="text">张惠妹aMEI</a></h2>
+                            <p>台湾歌手张惠妹</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="star">
+                        <a href="javascript:;" ><img src="images/songer01.jpg" height="62px"></a>
+                        <div class="text_war">
+                            <h2><a href="javascript:;"  class="text">张惠妹aMEI</a></h2>
+                            <p>台湾歌手张惠妹</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="star">
+                        <a href="javascript:;" ><img src="images/songer01.jpg" height="62px"></a>
+                        <div class="text_war">
+                            <h2><a href="javascript:;"  class="text">张惠妹aMEI</a></h2>
+                            <p>台湾歌手张惠妹</p>
+                        </div>
+                    </div>
+                </li>
+                <a href="javascript:;" class="entry" >申请成为网易音乐人</a>
+            </ul>
+        </div>
+        <div class="service Dj">
+            <div class="service_header clear">
+                <h2>热门DJ</h2>
+                <a href="javascript:;"  class="text">查看全部></a>
+            </div>
+            <ul id="join_DJ">
+                <li class="clear">
+                    <a href="javascript:;" class="pic" ><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war">
+                        <a href="javascript:;" class="name text" >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <a href="javascript:;" class="pic" ><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war">
+                        <a href="javascript:;" class="name text" href="javascript:;" >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <a href="javascript:;" class="pic" ><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war" >
+                        <a href="javascript:;" class="name text"  >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <a href="javascript:;" class="pic" ><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war">
+                        <a href="javascript:;" class="name text" >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <a href="javascript:;" class="pic" ><img src="images/Dj01.jpg"/></a>
+                    <div class="text_war">
+                        <a href="javascript:;" class="name text"  >灵伟<i class="fa fa-font"></i></a>
+                        <p>电台dj，资深乐评人</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
