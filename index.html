@@ -50,24 +50,23 @@
                     {"id":6,"src":"images/banner_106.jpg","bj":"#d02e15"},
                     {"id":7,"src":"images/banner_107.jpg","bj":"#f8f1e9"}
                 ]
-                        var banner_fn=function(index){
-                            $(".banner_1 .pic img").attr("src",data[index].src);
-                            $(".banner_bj").css("backgroundColor",data[index].bj);
-                            $(".banner_1 .center ul a ").css("backgroundColor","#fff").eq(index).css("backgroundColor","red")
-                        }
-
+                        var $banner=$(".banner_bj");
                         var list="";
                         for(var l=0;l<data.length;l++){
                             list+="<li><a href='#'></a></li>"
                         }
                         $(".banner_1 .center ul").append(list)
                         var n=0;
-                        banner_fn(n)
+                         $banner.find(".banner_1 .pic img").attr("src",data[n].src);
+                        $banner.css("backgroundColor",data[n].bj);
+                        $banner.find(".banner_1 .center ul a ").css("backgroundColor","#fff").eq(n).css("backgroundColor","red")
                         var time=null
                         function timer(){
                             time=setInterval(function(){
                                 n<data.length-1? n++:n=0;
-                                banner_fn(n)
+                                $banner.find(".banner_1 .pic img").attr("src",data[n].src);
+                                $banner.css("backgroundColor",data[n].bj);
+                                $banner.find(".banner_1 .center ul a ").css("backgroundColor","#fff").eq(n).css("backgroundColor","red")
                             },3000)
                         }
                         timer()
