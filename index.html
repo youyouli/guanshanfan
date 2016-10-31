@@ -56,12 +56,15 @@
                             list+="<li><a href='#'></a></li>"
                         }
                         $(".banner_1 .center ul").append(list)
+                for (var i=0;i<data.length;i++){
+                  $banner.find("ul").before( '<a href="javascript:;" class="pic"><img src="'+data[i].src+'" height="335px" width="731px" /></a>')
+                        }
                         var n=0;
                         var time=null
                         function timer(){
                             time=setInterval(function(){
                                 n<data.length-1? n++:n=0;
-                                $banner.find(".banner_1 .pic img").attr("src",data[n].src);
+                                $banner.find(".center .pic").eq(n).css("opacity",1).siblings(".pic").css("opacity",0);
                                 $banner.css("backgroundColor",data[n].bj);
                                 $banner.find(".banner_1 .center ul a ").css("backgroundColor","#fff").eq(n).css("backgroundColor","red")
                             },5000)
@@ -356,7 +359,7 @@
 </div>
 <div class="banner_bj">
         <div class="banner banner_1 main">
-            <div class="center"><a href="javascript:;" class="pic"><img src="images/banner_100.jpg" height="335px" width="731px" /></a>
+            <div class="center">
                 <ul>
                 </ul>
             </div>
