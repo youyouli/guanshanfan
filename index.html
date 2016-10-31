@@ -51,6 +51,11 @@
                     {"id":7,"src":"images/banner_107.jpg","bj":"#f8f1e9"}
                 ]
                         var $banner=$(".banner_bj");
+                function banner_fn(index){
+                    $banner.find(".center .pic").eq(index).css("opacity",1).siblings(".pic").css("opacity",0);
+                    $banner.css("backgroundColor",data[index].bj);
+                    $banner.find(".banner_1 .center ul a ").css("backgroundColor","#fff").eq(index).css("backgroundColor","red")
+                }
                         var list="";
                         for(var l=0;l<data.length;l++){
                             list+="<li><a href='#'></a></li>"
@@ -64,10 +69,8 @@
                         function timer(){
                             time=setInterval(function(){
                                 n<data.length-1? n++:n=0;
-                                $banner.find(".center .pic").eq(n).css("opacity",1).siblings(".pic").css("opacity",0);
-                                $banner.css("backgroundColor",data[n].bj);
-                                $banner.find(".banner_1 .center ul a ").css("backgroundColor","#fff").eq(n).css("backgroundColor","red")
-                            },5000)
+                                banner_fn(n)
+                            },4000)
                         }
                         timer()
                         $(".banner_1 .center ul li a").each(function(index){
